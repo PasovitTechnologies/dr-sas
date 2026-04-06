@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Heart, Phone, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Обо мне", href: "#about" },
@@ -13,18 +14,24 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer id="contacts" className="bg-[#064d53] text-white pt-12  pb-8">
+    <footer className="bg-primary text-white pt-12  pb-8">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         {/* Top */}
-        <div className="grid md:grid-cols-3 gap-12 pb-14 border-b border-white/10">
+        <div className="grid md:grid-cols-2 gap-12 pb-14 border-b border-white/10">
           {/* Logo */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-14 h-14 rounded-full bg-teal-700 flex items-center justify-center text-2xl font-semibold">
-                C
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary transition-all duration-300">
+                <Image
+                  src="/SANKARANARAYANAN ARUMUGAM Saravanan.jpg"
+                  alt="Doctor"
+                  width={60}
+                  height={60}
+                  className="object-cover"
+                />
               </div>
               <div>
-                <h3 className="text-4xl font-semibold">Д-р. Сас</h3>
+                <h3 className="text-4xl font-semibold">Доктор САС</h3>
               </div>
             </div>
 
@@ -38,7 +45,7 @@ export default function Footer() {
           <div>
             <h4 className="text-2xl font-semibold mb-6">Навигация</h4>
 
-            <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
               {navLinks.map((item) => (
                 <a
                   key={item.label}
@@ -52,7 +59,7 @@ export default function Footer() {
           </div>
 
           {/* Contacts */}
-          <div>
+          {/* <div>
             <h4 className="text-2xl font-semibold mb-6">Контакты</h4>
 
             <div className="space-y-4 text-white/70">
@@ -71,7 +78,7 @@ export default function Footer() {
                 <span>г. Москва, ул. Медицинская, д. 1</span>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom */}

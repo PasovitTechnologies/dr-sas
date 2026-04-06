@@ -2,11 +2,21 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import {
+  AlertCircle,
+  CheckCircle,
+  ChevronLeft,
+  ChevronRight,
+  Quote,
+} from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { FaQuoteRight, FaStar } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import ReviewModal from "./ReviewModal";
+import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
   {
@@ -27,84 +37,174 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const [open, setOpen] = useState(false);
+  const [toast, setToast] = useState(null);
+
+  useEffect(() => {
+    if (!toast) return;
+
+    const timer = setTimeout(() => {
+      setToast(null);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [toast]);
   return (
-    <section id="testimonials" className="bg-[#f7fbfb] py-12">
-      <div className="max-w-4xl mx-auto px-4 md:px-6">
-        {/* Heading */}
-        <div className="text-center mb-8">
-          <span className="bg-teal-100 text-teal-800 px-4 py-2 rounded-full ">
-            Отзывы
-          </span>
+    <section
+      id="testimonials"
+      className="relative py-20 md:pb-138 lg:pb-70 xl:pb-48 bg-[#f5f5f5] overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto  relative">
+        {/* LEFT ORANGE PANEL */}
+        <div className="w-full md:w-[45%] bg-secondary text-white p-8 md:p-12">
+          <h3 className="text-3xl font-semibold mb-4 leading-snug">
+            Что говорят <br className="hidden md:block" /> пациенты
+          </h3>
 
-          <h2 className="text-4xl font-semibold text-teal-900 mt-4">
-            Что говорят пациенты
-          </h2>
+          <p className="text-white/80 leading-relaxed mb-8 md:max-w-52 lg:max-w-72 xl:max-w-xs">
+            Вот что говорят о докторе Рашите Шете все довольные пациенты. Все
+            отзывы написаны ими лично.
+          </p>
 
-          {/* <p className="text-gray-500 mt-2">
-            Мнения пациентов о качестве лечения и обслуживания
-          </p> */}
+          <div className="flex justify-center md:justify-end md:max-w-52 lg:max-w-72 xl:max-w-xs">
+            <button
+              onClick={() => setOpen(true)}
+              className="flex items-center border border-primary gap-2 bg-transparent hover:bg-primary text-primary hover:text-white px-8 py-3 transition-all  duration-300 cursor-pointer"
+            >
+              Написать отзыв
+            </button>
+          </div>
         </div>
 
-        {/* Slider */}
-        <div className="relative ">
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={30}
-            slidesPerView={1}
-            navigation={{
-              nextEl: ".testimonial-next",
-              prevEl: ".testimonial-prev",
-            }}
-            pagination={{
-              clickable: true,
-              el: ".testimonial-pagination",
-            }}
-            autoplay={{
-              delay: 5000,
-            }}
-            loop
-          >
-            {testimonials.map((item, index) => (
-              <SwiperSlide className="p-4" key={index}>
-                <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-4 sm:p-6 md:p-10 min-h-116 md:min-h-84">
-                  <Quote className="text-teal-200 mb-2" size={34} />
+        {/* RIGHT DARK PANEL (OVERLAP) */}
+        <div
+          className="
+      relative md:absolute 
+      md:right-0 
+      md:top-10 
+      md:w-[65%] 
+      bg-primary 
+      text-white 
+      p-6 md:p-12
+      mt-8 md:mt-0
+    "
+        >
+          {/* Slider */}
+          <div className="relative">
+            <Swiper
+              modules={[Navigation, Pagination, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={1}
+              navigation={{
+                nextEl: ".testimonial-next",
+                prevEl: ".testimonial-prev",
+              }}
+              autoplay={{ delay: 5000 }}
+              loop
+            >
+              {testimonials.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <div className="flex flex-col md:flex-row gap-6 items-start">
+                    {/* LEFT: NAME */}
+                    <div className=" mt-6 text-center">
+                      <p className="text-[#f4a261] font-semibold whitespace-nowrap">
+                        {item.name}
+                      </p>
+                      <p className="text-white/60 text-sm">{item.role}</p>
+                    </div>
 
-                  {/* Stars */}
-                  <div className="flex text-teal-600 mb-2">{"★★★★★"}</div>
+                    {/* RIGHT: REVIEW CARD */}
+                    <div className="relative bg-[#104553] p-6 md:p-8 max-w-2xl">
+                      {/* Pointer */}
+                      <div className="hidden md:block absolute -left-3 top-6 w-6 h-6 bg-[#104553] rotate-45"></div>
 
-                  <p className="text-gray-700 leading-relaxed mb-6">
-                    "{item.text}"
-                  </p>
-
-                  <div>
-                    <p className="font-semibold text-teal-900">{item.name}</p>
-                    <p className="text-sm text-gray-500">{item.role}</p>
+                      {/* Text */}
+                      <div className="relative ">
+                        <p className="text-white/80 leading-relaxed text-lg italic ">
+                          {item.text}
+                        </p>
+                        {/* Quote icon */}
+                        <FaQuoteRight className="text-white/20  absolute -bottom-2 right-2 text-4xl" />
+                      </div>
+                      {/* Stars */}
+                      <div className="mt-6 text-yellow-400 text-lg flex gap-1">
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                </SwiperSlide>
+              ))}
+            </Swiper>
 
-          {/* Arrows */}
-          <button className="testimonial-prev absolute -left-4 top-1/2 -translate-y-1/2 z-10 text-teal-700 cursor-pointer">
-            <ChevronLeft size={24} />
-          </button>
-
-          <button className="testimonial-next absolute -right-4 top-1/2 -translate-y-1/2 z-10 text-teal-700 cursor-pointer">
-            <ChevronRight size={24} />
-          </button>
-        </div>
-
-        {/* Pagination */}
-        <div className="testimonial-pagination flex gap-2 justify-center mt-2" />
-
-        {/* CTA */}
-        <div className="text-center mt-6">
-          <button className="bg-teal-700 text-white px-8 py-3 rounded-xl hover:bg-teal-800 transition">
-            Написать отзыв
-          </button>
+            {/* Arrows */}
+            <div className="flex justify-end gap-4 mt-6">
+              <button className="testimonial-prev cursor-pointer text-white/70 hover:text-secondary transition-all duration-300">
+                <ChevronLeft />
+              </button>
+              <button className="testimonial-next cursor-pointer text-white/70 hover:text-secondary transition-all duration-300">
+                <ChevronRight />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+
+      <ReviewModal
+        open={open}
+        onClose={() => setOpen(false)}
+        onSuccess={() => {
+          setToast({
+            type: "success",
+            message: "Спасибо за отзыв!",
+          });
+        }}
+        onError={() => {
+          setToast({
+            type: "error",
+            message: "Ошибка отправки!",
+          });
+        }}
+      />
+
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            initial={{ y: -80, opacity: 0 }}
+            animate={{ y: 20, opacity: 1 }}
+            exit={{ y: -80, opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            className="fixed top-6 left-1/2 -translate-x-1/2 z-100 w-full flex justify-center px-4 max-w-lg"
+          >
+            <div
+              className={`
+          flex items-center justify-center gap-2 px-6 py-4  shadow-lg backdrop-blur-md
+          border max-w-md w-full
+          ${
+            toast.type === "success"
+              ? "bg-green-500 border-green-700 text-white"
+              : "bg-red-500 border-red-700 text-white"
+          }
+        `}
+            >
+              {toast.type === "success" ? (
+                <CheckCircle size={20} />
+              ) : (
+                <AlertCircle size={20} />
+              )}
+
+              <p className=" font-medium">{toast.message}</p>
+
+              <div className="absolute bottom-0 left-0 h-1 bg-white/40 w-full overflow-hidden">
+                <div className="h-full bg-white animate-[progress_5s_linear]" />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

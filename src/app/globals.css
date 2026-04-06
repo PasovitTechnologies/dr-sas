@@ -28,3 +28,17 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@theme inline {
+  --color-primary: #033b4a;
+  --color-secondary: #f09856;
+}
+
+@keyframes progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}

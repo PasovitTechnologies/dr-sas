@@ -115,10 +115,12 @@ export default function AboutModal({ type, close }) {
               <X />
             </button>
 
-            <h3 className="text-2xl text-black  font-semibold mb-6">{title}</h3>
+            <h3 className="text-2xl text-primary  font-semibold mb-6">
+              {title}
+            </h3>
 
             {type === "education" ? (
-              <ul className="space-y-3 text-gray-700">
+              <ul className="space-y-3 text-primary">
                 {education.map((item, i) => (
                   <li key={i}>• {item}</li>
                 ))}
@@ -127,7 +129,7 @@ export default function AboutModal({ type, close }) {
               <div className="overflow-x-auto">
                 <table className="w-full border border-gray-200 rounded-xl overflow-hidden">
                   {/* Header */}
-                  <thead className="bg-teal-800 text-white">
+                  <thead className="bg-primary text-white">
                     <tr>
                       <th className="text-left px-4 py-3 text-sm font-medium">
                         Должность
@@ -142,16 +144,16 @@ export default function AboutModal({ type, close }) {
                   </thead>
 
                   {/* Body */}
-                  <tbody className="text-gray-700 text-sm">
+                  <tbody className="text-primary text-sm">
                     {experience.map((item, i) => (
                       <tr
                         key={i}
                         className="border-t hover:bg-gray-50 transition"
                       >
-                        <td className="px-4 py-3 font-medium text-gray-900">
+                        <td className="px-4 py-3 font-medium text-primary">
                           {item.role}
                         </td>
-                        <td className="px-4 py-3 text-teal-700 md:whitespace-nowrap">
+                        <td className="px-4 py-3 text-primary md:whitespace-nowrap">
                           {item.year}
                         </td>
                         <td className="px-4 py-3">{item.place}</td>
