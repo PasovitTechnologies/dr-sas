@@ -105,22 +105,11 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col lg:flex-row ">
         {/* LEFT PANEL */}
         <div className="bg-secondary text-white p-5 md:p-10 space-y-6 lg:w-[40%]">
-          <h2 className="text-3xl font-semibold">Связаться c Доктор САС </h2>
+          <h2 className="text-3xl font-semibold">Если у Вас есть вопросы, пожалуйста напишите нам сообщение. Мы свяжемся с Вами и постараемся помочь.</h2>
         </div>
 
         {/* RIGHT FORM */}
         <div className="bg-[#f9fafa] p-6 md:p-10 lg:w-[60%]">
-          <p className="text-sm uppercase tracking-widest text-gray-500 mb-2">
-            Или
-          </p>
-
-          <h3 className="text-3xl font-semibold text-primary mb-4">
-            Напишите нам сообщение
-          </h3>
-
-          <p className="text-primary/80 mb-8">
-            Оставьте сообщение, и мы свяжемся с вами как можно скорее.
-          </p>
 
           <form onSubmit={handleSubmit} className="space-y-6 text-primary">
             {/* Input */}
@@ -128,8 +117,8 @@ export default function Contact() {
             <div>
               <div
                 className={`flex items-center border-b gap-3 py-2 transition-all
-    ${focused === "name" ? "border-secondary" : "border-gray-300"}
-  `}
+                  ${focused === "name" ? "border-secondary" : "border-gray-300"}
+              `}
               >
                 <User size={20} className="text-secondary" />
                 <input
@@ -258,11 +247,10 @@ export default function Contact() {
               className={`
           flex items-center justify-center gap-2 px-6 py-4  shadow-lg backdrop-blur-md
           border max-w-md w-full
-          ${
-            toast.type === "success"
-              ? "bg-green-500 border-green-700 text-white"
-              : "bg-red-500 border-red-700 text-white"
-          }
+          ${toast.type === "success"
+                  ? "bg-green-500 border-green-700 text-white"
+                  : "bg-red-500 border-red-700 text-white"
+                }
         `}
             >
               {toast.type === "success" ? (

@@ -360,7 +360,7 @@ export default function Services() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/services-bg.jpeg" // replace with your image
+          src="/shared/services-bg.jpeg" // replace with your image
           alt="background"
           className="w-full h-full object-cover"
         />

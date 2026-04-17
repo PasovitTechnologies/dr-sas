@@ -51,7 +51,7 @@ export default function Hero() {
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/hero-bg.png')" }}
+          style={{ backgroundImage: "url('/shared/hero-bg.png')" }}
         />
 
         {/* Teal Overlay */}
@@ -83,22 +83,26 @@ export default function Hero() {
               animate="visible"
               transition={t(0.25)}
             >
-              Санкаранараянан Арумугам Сараванан (Доктор САС)
+              Санкаранараянан Арумугам Сараванан <span className="text-primary" style={{ color: "#F09856" }}> (Доктор САС) </span> 
             </motion.h1>
 
             <div className="text-teal-100 text-lg mb-8">
               {[
                 {
-                  text: "Кандидат медицинских наук, врач высшей категории",
+                  text: "кандидат медицинских наук",
                   d: 0.42,
                 },
-                { text: "Врач травматолог-ортопед, онко-ортопед", d: 0.52 },
+                { text: "заведующий отделением травматологии и ортопедии", 
+                  d: 0.52 
+                },
                 {
-                  text: "Заведующий отделением травматологии и ортопедии в НДЦ",
+                  text: "врач высшей категории, травматолог-ортопед, окно-ортопед",
                   d: 0.62,
                 },
-                { text: "Ведущий научный сотрудник ЕАФО", d: 0.72 },
-                { text: "Организатор здравоохранения", d: 0.82 },
+                { text: "ведущий научный сотрудник, организатор здравоохранения", 
+                  d: 0.72 
+                },
+
               ].map(({ text, d }) => (
                 <motion.p
                   key={text}

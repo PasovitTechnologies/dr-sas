@@ -10,14 +10,14 @@ import {
   HeartPulse,
   Accessibility,
   Calendar,
-  Badge,
+  Award,
   Users,
   Heart,
 } from "lucide-react";
 
 const stats = [
   { id: 1, value: 25, suffix: "+", label: "лет опыта", icon: Calendar },
-  { id: 2, value: 26, suffix: "", label: "сертификатов", icon: Badge },
+  { id: 2, value: 26, suffix: "", label: "сертификатов", icon: Award },
   { id: 3, value: 5000, suffix: "+", label: "пациентов", icon: Users },
   {
     id: 4,
@@ -63,7 +63,7 @@ export default function StatsOverlap() {
         {/* LEFT IMAGE */}
         <div className="w-full md:w-[45%]">
           <img
-            src="/stats-image.jpeg"
+            src="/shared/stats-image.jpeg"
             alt="Orthopedic"
             className="w-full h-60 md:h-96 lg:h-112 object-cover "
           />

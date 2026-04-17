@@ -1,6 +1,6 @@
 import About from "@/components/About";
+import Blog from "@/components/Blog"; 
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Locations from "@/components/Locations";
 import Services from "@/components/Services";
@@ -15,11 +15,11 @@ export default function Home() {
       <About />
       <Services />
       <StatsSection />
+      <Blog /> 
       <Testimonials />
       <Locations />
       {/* <TreatmentApproach /> */}
       <Contact />
-      <Footer />
     </>
   );
 }
