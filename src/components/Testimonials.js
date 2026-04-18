@@ -62,7 +62,7 @@ export default function Testimonials() {
           </h3>
 
           <p className="text-white/80 leading-relaxed mb-8 md:max-w-52 lg:max-w-72 xl:max-w-xs">
-            Вот что говорят о докторе Рашите Шете все довольные пациенты. Все
+            Вот что говорят о докторе  довольные пациенты. Все
             отзывы написаны ими лично.
           </p>
 

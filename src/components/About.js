@@ -21,7 +21,7 @@ export default function About() {
           className="relative flex justify-center lg:justify-start"
         >
           <img
-            src="/SANKARANARAYANAN ARUMUGAM Saravanan.webp"
+            src="/doctor/profile.webp"
             alt="Доктор САС"
             className="rounded-2xl shadow-xl w-full max-w-md"
           />
@@ -41,10 +41,11 @@ export default function About() {
 
           <p className="text-lg text-teal-700 mb-6">(Д-р. Сас)</p> */}
 
-          <p className="text-primary  mb-4 leading-relaxed">
+          <p className="text-primary mb-4 leading-relaxed text-justify">
             <strong> Здравствуйте!</strong> <br /> Меня зовут{" "}
-            <strong> Санкаранараянан Арумугам Сараванан (Доктор САС)</strong>, и
-            я – врач травматолог-ортопед и онко-ортопед.{" "}
+            <strong>  Санкаранараянан Арумугам Сараванан (Доктор САС)</strong>, Лечении 
+            – врач травматолог-ортопед и онко-ортопед.
+            <br />
             <strong>Моя миссия</strong> – помочь вам вернуть свободу движения,
             избавиться от боли и наслаждаться полноценной жизнью, свободной от
             ограничений, связанных с заболеваниями и травмами
@@ -55,9 +56,9 @@ export default function About() {
             Мой подход к лечению:{" "}
           </p>
 
-          <p className="text-primary mb-6 leading-relaxed">
+          <p className="text-primary mb-6 leading-relaxed text-justify">
             Я верю, что каждый пациент уникален, и поэтому мой подход к
-            диагностике и лечению всегда индивидуален. Я стремлюсь не просто
+            диагностике и Лечении всегда индивидуален. Я стремлюсь не просто
             устранить симптомы, но и выявить первопричину проблемы, чтобы
             предложить наиболее эффективное и долгосрочное решение. Моя работа
             основана на глубоких знаниях анатомии, физиологии и патологии

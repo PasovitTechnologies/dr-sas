@@ -7,7 +7,7 @@ import Image from "next/image";
 const navLinks = [
   { label: "Обо мне", href: "#about" },
   { label: "Услуги", href: "#services" },
-  { label: "Консультации", href: "#" },
+  { label: "Блог", href: "#blog" },
   { label: "Отзывы", href: "#testimonials" },
   { label: "Контакты", href: "#contacts" },
 ];
@@ -23,7 +23,7 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-4">
               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary transition-all duration-300">
                 <Image
-                  src="/SANKARANARAYANAN ARUMUGAM Saravanan.jpg"
+                  src="/doctor/profile.jpg"
                   alt="Doctor"
                   width={60}
                   height={60}

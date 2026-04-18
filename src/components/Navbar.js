@@ -3,14 +3,14 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Phone, Menu, X, MapPin, Instagram, Send } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { scrollToSection } from "@/utils/scrollToSection";
 
 const navItems = [
   { label: "Обо мне", href: "#about" },
   { label: "Услуги", href: "#services" },
-  { label: "Консультации", href: "#" },
+  { label: "Блог", href: "#blog" },
   { label: "Отзывы", href: "#testimonials" },
   { label: "Контакты", href: "#contacts" },
 ];
@@ -20,12 +20,35 @@ const t = (delay = 0) => ({ duration: 0.5, ease: "easeOut", delay });
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const navigateToSection = (sectionId) => {
+    if (!sectionId) return;
+
+    setOpen(false);
+
+    if (pathname === "/") {
+      scrollToSection(sectionId);
+      return;
+    }
+
+    router.push(`/#${sectionId}`);
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [open]);
 
   return (
     <header className="fixed top-0 z-50 w-full bg-white shadow-sm transition-all duration-300">
@@ -66,7 +89,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <motion.div
-          onClick={() => scrollToSection("hero")}
+          onClick={() => navigateToSection("hero")}
           className="flex items-center gap-2 cursor-pointer"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -78,7 +101,7 @@ export default function Navbar() {
             }`}
           >
             <Image
-              src="/SANKARANARAYANAN ARUMUGAM Saravanan.jpg"
+              src="/doctor/profile.jpg"
               alt="Doctor"
               width={60}
               height={60}
@@ -107,7 +130,7 @@ export default function Navbar() {
             {navItems.map((item, i) => (
               <motion.button
                 key={item.label}
-                onClick={() => scrollToSection(item.href.replace("#", ""))}
+                onClick={() => navigateToSection(item.href.replace("#", ""))}
                 className="relative text-primary font-semibold hover:text-secondary transition duration-300 group cursor-pointer"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -127,7 +150,7 @@ export default function Navbar() {
             transition={t(0.55)}
           >
             <button
-              onClick={() => scrollToSection("contacts")}
+              onClick={() => navigateToSection("contacts")}
               className="flex items-center gap-2 bg-secondary hover:bg-primary text-white px-8 py-3 transition-all duration-300 cursor-pointer font-semibold"
             >
               <Phone size={18} />
@@ -161,7 +184,7 @@ export default function Navbar() {
             {navItems.map((item, i) => (
               <motion.button
                 key={item.label}
-                onClick={() => scrollToSection(item.href.replace("#", ""))}
+                onClick={() => navigateToSection(item.href.replace("#", ""))}
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={t(0.05 + i * 0.06)}
@@ -171,7 +194,7 @@ export default function Navbar() {
             ))}
 
             <motion.button
-              onClick={() => scrollToSection("contacts")}
+              onClick={() => navigateToSection("contacts")}
               className="flex items-center gap-2 bg-secondary hover:bg-primary text-white px-6 py-3 transition-all duration-300 cursor-pointer justify-center mt-4 font-semibold"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}

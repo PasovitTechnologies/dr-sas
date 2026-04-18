@@ -89,12 +89,18 @@ export default function Locations() {
           ))}
         </div>
         {/* Map */}
-        <iframe
-          src="https://yandex.com/map-widget/v1/?um=constructor%3A4ab72941424d689fa479966cfcc6fc32c829ea7a0d8225e03a532daf5a9003ed&amp;source=constructor"
-          width="100%"
-          height="450"
-          frameBorder="0"
-        ></iframe>
+        <div className="rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+          <iframe
+            src="https://yandex.com/map-widget/v1/?um=constructor%3A4ab72941424d689fa479966cfcc6fc32c829ea7a0d8225e03a532daf5a9003ed&amp;source=constructor"
+            width="100%"
+            height="450"
+            frameBorder="0"
+            style={{
+              filter: "grayscale(100%) contrast(1.1) brightness(1.1)",
+              WebkitFilter: "grayscale(100%) contrast(1.1) brightness(1.1)"
+            }}
+          ></iframe>
+        </div>
       </div>
     </section>
   );
